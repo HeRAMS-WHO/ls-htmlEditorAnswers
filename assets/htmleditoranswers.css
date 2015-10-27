@@ -1,0 +1,5 @@
+.multiple-short-txt ul li span.cke_voice_label 
+,.multiple-short-txt ul li span.cke_button_label
+{
+    display: none;
+}
