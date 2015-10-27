@@ -3,10 +3,10 @@
  * htmlEditorAnswers Plugin for LimeSurvey
  *
  * @author Denis Chenu <denis@sondages.pro>
- * @copyright 2014 Denis Chenu <http://sondages.pro>
- * @copyright 2014 WHO | World Health Organization <http://www.who.int>
+ * @copyright 2014-2015 Denis Chenu <http://sondages.pro>
+ * @copyright 2014-2015 WHO | World Health Organization <http://www.who.int>
  * @license GNU AFFERO GENERAL PUBLIC LICENSE Version 3 or later (the "AGPL")
- * @version 0.9
+ * @version 1.0
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -66,8 +66,8 @@ class htmlEditorAnswers extends PluginBase {
         ),
     );
 
-    public function __construct(PluginManager $manager, $id) {
-        parent::__construct($manager, $id);
+    public function init()
+    {
         $this->subscribe('beforeSurveySettings');
         $this->subscribe('newSurveySettings');
         $this->subscribe('beforeQuestionRender');
@@ -159,7 +159,7 @@ class htmlEditorAnswers extends PluginBase {
             
             if($sConfigFile=='default')
                 $sConfigFile=$this->get('configfile',null,null,$this->settings['configfile']['default']);
-            $sLangCode= Yii::app()->lang->langcode;
+            $sLangCode= App()->language;
 
             $aCkOptions=array(
                 'customConfig' => "{$assetUrl}/{$sConfigFile}.js",
